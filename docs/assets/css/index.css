@@ -1,0 +1,162 @@
+@import './fonticon.css';
+/* 全局变量 */
+:root {
+    --maskColor:rgba(255,255,255,0.3);
+    --inputBgc:rgba(255,255,255,0.3);
+}
+html,body{
+    height: 100%;
+    background-color: #ebecf0;
+    color: aliceblue;
+}
+a{
+    text-decoration: none;
+}
+.bg-image{
+    position: relative;
+    height: 100%;
+    background-image: url(../images/bg.jfif);
+    /* filter: blur(10px); */
+}
+
+.bg-image .mask{
+    height: 100%;
+    /* background-color: var(--maskColor); */
+}
+
+.bg-image .view-container{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.bg-image .view-container .input-wrapper{
+    height: 30px;
+    width: 30%;
+    padding: 4px 10px;
+    border-radius: 30px;
+    margin: auto;
+    background-color:var(--inputBgc) ;
+    margin-top: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    /* border: 1px solid #fff; */
+    /* box-shadow: 5px 5px 8px 0px gray; */
+    transition: all 0.5s;
+}
+
+.bg-image .view-container .input-wrapper:hover{
+    width: 50%;
+}
+
+.bg-image .view-container .input-wrapper input[type='text']{
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex: 1;
+    text-align: center;
+}
+
+.bg-image .view-container .input-wrapper input[type='submit']{
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex: 1;
+    width: 20%;
+    border: none;
+    display: none;
+}
+
+.bg-image .view-container .site-wrapper{
+    margin:100px auto;
+    width: 80%;
+    /* min-width: 100px; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid red; */
+}
+
+.btn2
+{
+    position: relative;
+    width: 60%;
+    padding:10px ;
+    box-shadow:-4px -4px 12px rgb(255, 255, 255),
+     4px 4px 12px rgba(121, 130, 160, 0.747);
+     background: #ebecf0;
+     outline: none;
+     border: none;
+     font-size: 18px;
+     border-radius: 50px;
+     margin-bottom:  15px;
+     color: #8a92a5;
+     font-weight: 500;
+     font-family: 'Poppins',sans-serif;
+     display: inline-block;
+}
+.btn2:active
+{
+    box-shadow:inset -2px -2px 6px rgb(255, 255, 255),
+    inset 2px 2px 6px rgba(121, 130, 160, 0.747);
+    color: #185ef0;
+  
+}
+
+.NPB  
+{
+  position: relative;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  margin-left: 14px;
+  box-shadow:-2px -2px 6px rgb(255, 255, 255),
+    2px 2px 6px rgba(121, 130, 160, 0.747);
+    font-size: 18px;
+    color: #8a92a5;
+
+} 
+.NPB:active
+{
+  box-shadow:inset -2px -2px 6px rgb(255, 255, 255),
+    inset 2px 2px 6px rgba(121, 130, 160, 0.747);
+    color: #185ef0;
+}
+
+.NPB .iconfont{
+    width: 100%;
+    height: 100%;
+}
+
+a.site{
+    width: 50px;
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a.site>img{
+    width: 100%;
+    height: auto;
+}
+
+a.site .site-name{
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 4px;
+}
