@@ -15,15 +15,19 @@
     <div class="bg-image">
         <div class="mask"></div>
         <div class="view-container">
-            <form action="http://www.baidu.com/s" method="GET">
+            <form id="searchForm" action="http://www.baidu.com/s" method="GET">
                 <div class="input-wrapper">
                     <!-- <input name="wd" class="searchInput" type="text" placeholder="请输入你的无聊的问题" pattern="[A-Za-z]{3}"
                         title="限制条件提示"> -->
                     <input name="wd" class="searchInput" type="text" placeholder="" autofocus>
-                    <input type="submit" value=""></input>
+                    <input id="submit" type="submit" value=""></input>
                 </div>
                 <!-- <div class="btn2"></div> -->
             </form>
+            <div class="changeSearch">
+                <button id="baidu" onclick="useBaidu()">百度</button>
+                <button id="bing" onclick="useBing()">必应</button>
+            </div>
             <div class="site-wrapper">
                 <a class="site site-hover" href="http://www.youku.com" target="_blank">
                     <img src="./assets/images/siteIcon/youku.png" alt="">
@@ -71,6 +75,7 @@
                     </button>
                 </div>
             </div>
+
         </div>
     </div>
 </body>

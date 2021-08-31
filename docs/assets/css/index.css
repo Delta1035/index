@@ -214,3 +214,12 @@ a.site .site-name{
     justify-content: center;
     align-items: center;
 }
+.changeSearch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.changeSearch button{
+    margin: 10px;
+}
