@@ -91,7 +91,7 @@ a{
     margin:100px auto;
     width: 80%;
     /* min-width: 100px; */
-    overflow: hidden;
+    /* overflow: hidden; */
     white-space: nowrap;
     text-overflow: ellipsis;
     color: aliceblue;
@@ -184,4 +184,33 @@ a.site .site-name{
 .site-hover:active{
     border: 1px solid transparent;
     box-shadow: blue;
+}
+
+.add-site{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    color: black;
+}
+.add-site .add-site-input{
+    position: absolute;
+    top: -40px;
+    border: 1px solid gray;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: cornsilk;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+.add-site button.add{
+    width: 100%;
+    height: 100%;
+    font-size: 100px;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
