@@ -59,7 +59,7 @@ cancelBtn.addEventListener('click', function () {
 
 
 function useBaidu(){
-    searchForm.action = "http://www.baidu.com/s";
+    searchForm.action = "https://www.baidu.com/s";
     inputDom.name = 'wd';
     submit.click();
 }
