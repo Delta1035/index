@@ -6,7 +6,7 @@
 }
 html,body{
     height: 100%;
-    background-color: #f7f8fb;
+    background-color: #e6f4ff;
     color: aliceblue;
 }
 a{
@@ -15,7 +15,8 @@ a{
 .bg-image{
     position: relative;
     height: 100%;
-    background-image: url(../images/bg/bg-small.png);
+    background-color: #e6f4ff;
+    background-image: none;
     /* filter: blur(10px); */
     /* background-color: #fff; */
 }
