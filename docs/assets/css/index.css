@@ -6,7 +6,7 @@
 }
 html,body{
     height: 100%;
-    background-color: #ebecf0;
+    background-color: #f7f8fb;
     color: aliceblue;
 }
 a{
@@ -107,7 +107,7 @@ a{
     padding:10px ;
     box-shadow:-4px -4px 12px rgb(255, 255, 255),
      4px 4px 12px rgba(121, 130, 160, 0.747);
-     background: #ebecf0;
+     background: #f7f8fb;
      outline: none;
      border: none;
      font-size: 18px;
