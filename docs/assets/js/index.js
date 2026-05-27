@@ -24,38 +24,44 @@ var searchForm = document.querySelector("#searchForm");
 console.log(searchForm);
 
 
-addBtn.addEventListener('click', function () {
-    addPanel.style.display = 'flex';
-})
+if (addBtn && addPanel) {
+    addBtn.addEventListener('click', function () {
+        addPanel.style.display = 'flex';
+    })
+}
 
-confirmBtn.addEventListener('click', function () {
-    var site = {
-        name: siteNameInput.value,
-        url: siteURLInput.value
-    }
-
-    console.log(site);
-    console.log(localStorage.getItem('siteList'));
-
-    if ((siteNameInput.value !== null && siteNameInput.value.trim().length > 0) && (siteURLInput.value !== null && siteURLInput.value.trim().length > 0)) {
-        if (localStorage.getItem('siteList') === undefined) {//不存在
-            console.log('1');
-            localStorage.setItem('siteList', JSON.stringify([site]))
-        } else {
-            console.log('2');
-            let savedSiteList = JSON.parse(localStorage.getItem('siteList'));
-            var r = savedSiteList.push(site);
-            console.log(r);
-            localStorage.setItem('siteList', JSON.stringify())
+if (confirmBtn && addPanel && siteNameInput && siteURLInput) {
+    confirmBtn.addEventListener('click', function () {
+        var site = {
+            name: siteNameInput.value,
+            url: siteURLInput.value
         }
-    }
-    addPanel.style.display = 'none';
 
-})
+        console.log(site);
+        console.log(localStorage.getItem('siteList'));
 
-cancelBtn.addEventListener('click', function () {
-    addPanel.style.display = 'none';
-})
+        if ((siteNameInput.value !== null && siteNameInput.value.trim().length > 0) && (siteURLInput.value !== null && siteURLInput.value.trim().length > 0)) {
+            if (localStorage.getItem('siteList') === undefined) {//不存在
+                console.log('1');
+                localStorage.setItem('siteList', JSON.stringify([site]))
+            } else {
+                console.log('2');
+                let savedSiteList = JSON.parse(localStorage.getItem('siteList'));
+                var r = savedSiteList.push(site);
+                console.log(r);
+                localStorage.setItem('siteList', JSON.stringify())
+            }
+        }
+        addPanel.style.display = 'none';
+
+    })
+}
+
+if (cancelBtn && addPanel) {
+    cancelBtn.addEventListener('click', function () {
+        addPanel.style.display = 'none';
+    })
+}
 
 
 function useBaidu(){
@@ -65,7 +71,13 @@ function useBaidu(){
 }
 
 function useBing(){
-    searchForm.action = "https://cn.bing.com/search?q";
+    searchForm.action = "https://cn.bing.com/search";
+    inputDom.name = 'q';
+    submit.click();
+}
+
+function useGoogle(){
+    searchForm.action = "https://www.google.com/search";
     inputDom.name = 'q';
     submit.click();
 }
