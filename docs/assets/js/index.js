@@ -1,10 +1,91 @@
 
 let inputDom = document.querySelector('.searchInput');
 var submit = document.querySelector('#submit');
-console.log(inputDom);
-inputDom.addEventListener('keyup', function (event) {
-    console.log(event);
-})
+var searchForm = document.querySelector("#searchForm");
+var engineButtons = document.querySelectorAll('.changeSearch button[data-engine]');
+var tabButtons = document.querySelectorAll('.site-tab[data-tab]');
+var tabPanels = document.querySelectorAll('.site-section[data-panel]');
+
+var searchEngines = {
+    baidu: {
+        action: 'https://baidu.com/s',
+        name: 'wd'
+    },
+    bing: {
+        action: 'https://cn.bing.com/search',
+        name: 'q'
+    },
+    google: {
+        action: 'https://www.google.com/search',
+        name: 'q'
+    }
+};
+
+function setSearchEngine(engine) {
+    var config = searchEngines[engine] || searchEngines.baidu;
+
+    searchForm.action = config.action;
+    inputDom.name = config.name;
+
+    engineButtons.forEach(function (button) {
+        var isActive = button.dataset.engine === engine;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+    });
+}
+
+function looksLikeUrl(value) {
+    return /^(https?:\/\/|localhost(:\d+)?(\/|$)|[\w-]+(\.[\w-]+)+(:\d+)?(\/|$))/i.test(value);
+}
+
+function normalizeUrl(value) {
+    if (/^https?:\/\//i.test(value)) {
+        return value;
+    }
+
+    return 'https://' + value;
+}
+
+function switchSiteTab(tab) {
+    tabButtons.forEach(function (button) {
+        var isActive = button.dataset.tab === tab;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-selected', String(isActive));
+    });
+
+    tabPanels.forEach(function (panel) {
+        var isActive = panel.dataset.panel === tab;
+        panel.classList.toggle('active', isActive);
+        panel.hidden = !isActive;
+    });
+}
+
+if (searchForm && inputDom) {
+    searchForm.addEventListener('submit', function (event) {
+        var value = inputDom.value.trim();
+
+        if (looksLikeUrl(value)) {
+            event.preventDefault();
+            window.location.href = normalizeUrl(value);
+        }
+    });
+}
+
+engineButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        setSearchEngine(button.dataset.engine);
+        inputDom.focus();
+    });
+});
+
+tabButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        switchSiteTab(button.dataset.tab);
+    });
+});
+
+setSearchEngine('baidu');
+switchSiteTab('dev');
 
 //获取添加面板
 var addPanel = document.querySelector('.add-site-input');
@@ -18,11 +99,6 @@ var cancelBtn = document.querySelector('.cancel');
 var siteNameInput = document.querySelector('#siteName');
 //网站地址输入框
 var siteURLInput = document.querySelector('#siteURL');
-
-//搜索表单
-var searchForm = document.querySelector("#searchForm");
-console.log(searchForm);
-
 
 if (addBtn && addPanel) {
     addBtn.addEventListener('click', function () {
@@ -63,21 +139,3 @@ if (cancelBtn && addPanel) {
     })
 }
 
-
-function useBaidu(){
-    searchForm.action = "https://baidu.com/s";
-    inputDom.name = 'wd';
-    submit.click();
-}
-
-function useBing(){
-    searchForm.action = "https://cn.bing.com/search";
-    inputDom.name = 'q';
-    submit.click();
-}
-
-function useGoogle(){
-    searchForm.action = "https://www.google.com/search";
-    inputDom.name = 'q';
-    submit.click();
-}

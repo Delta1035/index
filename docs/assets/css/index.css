@@ -21,7 +21,9 @@
 
 html,
 body {
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -46,7 +48,7 @@ input {
 
 .bg-image {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
     background:
         linear-gradient(135deg, rgba(244, 248, 251, 0.92), rgba(233, 242, 240, 0.84)),
@@ -72,16 +74,27 @@ input {
     position: relative;
     z-index: 2;
     width: min(1180px, 100%);
-    min-height: 100vh;
+    height: 100vh;
     margin: 0 auto;
-    padding: clamp(56px, 10vh, 96px) 24px 56px;
+    padding: clamp(28px, 5vh, 52px) 24px 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 18px;
+    overflow: hidden;
+}
+
+.search-row {
+    width: min(1080px, 100%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 0 0 auto;
 }
 
 #searchForm {
-    width: min(720px, 100%);
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .bg-image .view-container .input-wrapper {
@@ -114,7 +127,7 @@ input {
     outline: none;
     color: var(--text);
     font-size: 18px;
-    text-align: center;
+    text-align: left;
 }
 
 .bg-image .view-container .input-wrapper input[type='text']::placeholder {
@@ -131,8 +144,7 @@ input {
 }
 
 .changeSearch {
-    width: min(520px, 100%);
-    margin-top: 20px;
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,6 +165,7 @@ input {
 }
 
 .changeSearch button:hover,
+.changeSearch button.active,
 .changeSearch button:focus-visible {
     background: var(--accent);
     color: #fff;
@@ -162,23 +175,70 @@ input {
 
 .bg-image .view-container .site-wrapper {
     width: min(1080px, 100%);
-    margin: clamp(34px, 6vh, 64px) auto 0;
-    padding: clamp(18px, 3vw, 28px);
+    min-height: 0;
+    margin: 0 auto;
+    padding: clamp(14px, 2.4vw, 22px);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     background: var(--surface);
     box-shadow: 0 18px 48px rgba(38, 57, 77, 0.1);
     backdrop-filter: blur(16px);
-    display: grid;
-    gap: 28px;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+}
+
+.site-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.site-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.site-tab {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 0 16px;
+    border: 1px solid rgba(30, 122, 115, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-tab:hover,
+.site-tab:focus-visible,
+.site-tab.active {
+    border-color: rgba(30, 122, 115, 0.34);
+    background: var(--accent);
+    color: #fff;
+    outline: none;
 }
 
 .site-section {
     min-width: 0;
+    min-height: 0;
+    display: none;
+    flex: 1 1 auto;
+    overflow: auto;
+    padding-right: 2px;
+}
+
+.site-section.active {
+    display: block;
 }
 
 .section-heading {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -188,7 +248,7 @@ input {
 .section-heading h2 {
     margin: 0;
     color: var(--text);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: 0;
@@ -203,14 +263,14 @@ input {
 
 .site-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
 }
 
 a.site {
     min-width: 0;
-    min-height: 86px;
-    padding: 14px;
+    min-height: 74px;
+    padding: 12px;
     border: 1px solid rgba(36, 52, 70, 0.08);
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.38);
@@ -231,9 +291,9 @@ a.site:focus-visible {
 }
 
 .site-badge {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
     border-radius: 10px;
     background: linear-gradient(135deg, rgba(30, 122, 115, 0.14), rgba(219, 116, 80, 0.16));
     color: var(--accent-strong);
@@ -253,7 +313,7 @@ a.site:focus-visible {
 a.site .site-name {
     width: 100%;
     color: var(--text);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1.35;
     text-align: left;
@@ -263,7 +323,7 @@ a.site .site-name {
 
 a.site .site-desc {
     width: 100%;
-    margin-top: 4px;
+    margin-top: 3px;
     color: var(--muted);
     font-size: 12px;
     line-height: 1.45;
@@ -353,7 +413,14 @@ a.site .site-desc {
 
 @media (max-width: 720px) {
     .bg-image .view-container {
-        padding: 56px 18px 36px;
+        padding: 22px 18px 20px;
+        gap: 14px;
+    }
+
+    .search-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
     }
 
     .bg-image .view-container .input-wrapper {
@@ -367,7 +434,7 @@ a.site .site-desc {
 
     .bg-image .view-container .site-wrapper {
         padding: 16px;
-        gap: 24px;
+        gap: 14px;
     }
 
     .section-heading {
@@ -415,7 +482,7 @@ a.site .site-desc {
 
 @media (max-width: 420px) {
     .bg-image .view-container {
-        padding: 40px 14px 28px;
+        padding: 16px 14px 16px;
     }
 
     .changeSearch {
