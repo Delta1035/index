@@ -15,25 +15,34 @@
     <div class="bg-image">
         <div class="mask"></div>
         <div class="view-container">
-            <form id="searchForm" action="http://www.baidu.com/s" method="GET">
-                <div class="input-wrapper">
-                    <!-- <input name="wd" class="searchInput" type="text" placeholder="请输入你的无聊的问题" pattern="[A-Za-z]{3}"
-                        title="限制条件提示"> -->
-                    <input name="wd" class="searchInput" type="text" placeholder="搜索你想知道的内容" autofocus>
-                    <input id="submit" type="submit" value=""></input>
+            <div class="search-row">
+                <form id="searchForm" action="https://baidu.com/s" method="GET">
+                    <div class="input-wrapper">
+                        <!-- <input name="wd" class="searchInput" type="text" placeholder="请输入你的无聊的问题" pattern="[A-Za-z]{3}"
+                            title="限制条件提示"> -->
+                        <input name="wd" class="searchInput" type="text" placeholder="搜索或输入网址" autofocus>
+                        <input id="submit" type="submit" value=""></input>
+                    </div>
+                    <!-- <div class="btn2"></div> -->
+                </form>
+                <div class="changeSearch" role="group" aria-label="切换搜索引擎">
+                    <button id="baidu" class="active" type="button" data-engine="baidu">百度</button>
+                    <button id="bing" type="button" data-engine="bing">必应</button>
+                    <button id="google" type="button" data-engine="google">谷歌</button>
                 </div>
-                <!-- <div class="btn2"></div> -->
-            </form>
-            <div class="changeSearch">
-                <button id="baidu" type="button" onclick="useBaidu()">百度</button>
-                <button id="bing" type="button" onclick="useBing()">必应</button>
-                <button id="google" type="button" onclick="useGoogle()">谷歌</button>
             </div>
             <div class="site-wrapper">
-                <section class="site-section">
+                <div class="site-tabs" role="tablist" aria-label="常用网站分类">
+                    <button class="site-tab active" type="button" role="tab" aria-selected="true" aria-controls="tab-dev" data-tab="dev">开发</button>
+                    <button class="site-tab" type="button" role="tab" aria-selected="false" aria-controls="tab-video" data-tab="video">视频</button>
+                    <button class="site-tab" type="button" role="tab" aria-selected="false" aria-controls="tab-entertainment" data-tab="entertainment">娱乐</button>
+                    <button class="site-tab" type="button" role="tab" aria-selected="false" aria-controls="tab-study" data-tab="study">学习</button>
+                </div>
+
+                <section id="tab-dev" class="site-section active" role="tabpanel" data-panel="dev">
                     <div class="section-heading">
-                        <h2>国内 IT 常用</h2>
-                        <span>资讯、社区、代码托管</span>
+                        <h2>开发常用</h2>
+                        <span>社区、代码、文档与工具</span>
                     </div>
                     <div class="site-grid">
                         <a class="site site-hover" href="https://gitee.com/" target="_blank" rel="noopener">
@@ -78,15 +87,6 @@
                                 <div class="site-desc">科技新闻与行业动态</div>
                             </div>
                         </a>
-                    </div>
-                </section>
-
-                <section class="site-section">
-                    <div class="section-heading">
-                        <h2>国外 IT 常用</h2>
-                        <span>社区、代码、技术趋势</span>
-                    </div>
-                    <div class="site-grid">
                         <a class="site site-hover" href="https://github.com/" target="_blank" rel="noopener">
                             <span class="site-badge">GH</span>
                             <div class="site-copy">
@@ -129,15 +129,6 @@
                                 <div class="site-desc">开发经验与实践文章</div>
                             </div>
                         </a>
-                    </div>
-                </section>
-
-                <section class="site-section">
-                    <div class="section-heading">
-                        <h2>文档与工具</h2>
-                        <span>查询、调试、设计资源</span>
-                    </div>
-                    <div class="site-grid">
                         <a class="site site-hover" href="https://www.runoob.com/" target="_blank" rel="noopener">
                             <span class="site-badge">菜</span>
                             <div class="site-copy">
@@ -178,6 +169,201 @@
                             <div class="site-copy">
                                 <div class="site-name">Figma Community</div>
                                 <div class="site-desc">设计稿、组件与模板</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="tab-video" class="site-section" role="tabpanel" data-panel="video" hidden>
+                    <div class="section-heading">
+                        <h2>视频常用</h2>
+                        <span>长视频、短视频、直播与影视</span>
+                    </div>
+                    <div class="site-grid">
+                        <a class="site site-hover" href="https://www.bilibili.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">B</span>
+                            <div class="site-copy">
+                                <div class="site-name">哔哩哔哩</div>
+                                <div class="site-desc">视频、番剧、知识区与直播</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://v.qq.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">腾</span>
+                            <div class="site-copy">
+                                <div class="site-name">腾讯视频</div>
+                                <div class="site-desc">剧集、综艺、电影与动漫</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.iqiyi.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">爱</span>
+                            <div class="site-copy">
+                                <div class="site-name">爱奇艺</div>
+                                <div class="site-desc">影视、综艺、纪录片</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.youku.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">优</span>
+                            <div class="site-copy">
+                                <div class="site-name">优酷</div>
+                                <div class="site-desc">剧集、综艺、体育与少儿</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.mgtv.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">芒</span>
+                            <div class="site-copy">
+                                <div class="site-name">芒果TV</div>
+                                <div class="site-desc">综艺、剧集与自制内容</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.douyin.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">抖</span>
+                            <div class="site-copy">
+                                <div class="site-name">抖音</div>
+                                <div class="site-desc">短视频、直播与热点内容</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.kuaishou.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">快</span>
+                            <div class="site-copy">
+                                <div class="site-name">快手</div>
+                                <div class="site-desc">短视频、直播与生活内容</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.youtube.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">YT</span>
+                            <div class="site-copy">
+                                <div class="site-name">YouTube</div>
+                                <div class="site-desc">全球视频、频道与直播</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="tab-entertainment" class="site-section" role="tabpanel" data-panel="entertainment" hidden>
+                    <div class="section-heading">
+                        <h2>娱乐常用</h2>
+                        <span>音乐、游戏、社区与资讯</span>
+                    </div>
+                    <div class="site-grid">
+                        <a class="site site-hover" href="https://music.163.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">网</span>
+                            <div class="site-copy">
+                                <div class="site-name">网易云音乐</div>
+                                <div class="site-desc">音乐播放、歌单与评论社区</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://y.qq.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">Q音</span>
+                            <div class="site-copy">
+                                <div class="site-name">QQ音乐</div>
+                                <div class="site-desc">华语音乐、榜单与歌单</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.douban.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">豆</span>
+                            <div class="site-copy">
+                                <div class="site-name">豆瓣</div>
+                                <div class="site-desc">电影、图书、音乐评分与讨论</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.zhihu.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">知</span>
+                            <div class="site-copy">
+                                <div class="site-name">知乎</div>
+                                <div class="site-desc">问答、专栏与热点讨论</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://weibo.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">微</span>
+                            <div class="site-copy">
+                                <div class="site-name">微博</div>
+                                <div class="site-desc">热搜、明星与实时话题</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.xiaohongshu.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">红</span>
+                            <div class="site-copy">
+                                <div class="site-name">小红书</div>
+                                <div class="site-desc">生活方式、种草与图文视频</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://store.steampowered.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">ST</span>
+                            <div class="site-copy">
+                                <div class="site-name">Steam</div>
+                                <div class="site-desc">PC 游戏商店与社区</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.3dmgame.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">3D</span>
+                            <div class="site-copy">
+                                <div class="site-name">3DM游戏网</div>
+                                <div class="site-desc">游戏资讯、攻略与评测</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="tab-study" class="site-section" role="tabpanel" data-panel="study" hidden>
+                    <div class="section-heading">
+                        <h2>学习常用</h2>
+                        <span>课程、公开课、语言与题库</span>
+                    </div>
+                    <div class="site-grid">
+                        <a class="site site-hover" href="https://www.icourse163.org/" target="_blank" rel="noopener">
+                            <span class="site-badge">MOOC</span>
+                            <div class="site-copy">
+                                <div class="site-name">中国大学MOOC</div>
+                                <div class="site-desc">高校课程、认证与学习计划</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.xuetangx.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">学</span>
+                            <div class="site-copy">
+                                <div class="site-name">学堂在线</div>
+                                <div class="site-desc">大学课程与职业课程</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.coursera.org/" target="_blank" rel="noopener">
+                            <span class="site-badge">C</span>
+                            <div class="site-copy">
+                                <div class="site-name">Coursera</div>
+                                <div class="site-desc">海外大学与职业证书课程</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.edx.org/" target="_blank" rel="noopener">
+                            <span class="site-badge">edX</span>
+                            <div class="site-copy">
+                                <div class="site-name">edX</div>
+                                <div class="site-desc">高校公开课与专业课程</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.khanacademy.org/" target="_blank" rel="noopener">
+                            <span class="site-badge">K</span>
+                            <div class="site-copy">
+                                <div class="site-name">Khan Academy</div>
+                                <div class="site-desc">数学、科学与基础学科学习</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.duolingo.com/" target="_blank" rel="noopener">
+                            <span class="site-badge">D</span>
+                            <div class="site-copy">
+                                <div class="site-name">Duolingo</div>
+                                <div class="site-desc">语言学习与每日练习</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://www.51zxw.net/" target="_blank" rel="noopener">
+                            <span class="site-badge">51</span>
+                            <div class="site-copy">
+                                <div class="site-name">我要自学网</div>
+                                <div class="site-desc">办公、设计、编程入门课程</div>
+                            </div>
+                        </a>
+                        <a class="site site-hover" href="https://leetcode.cn/" target="_blank" rel="noopener">
+                            <span class="site-badge">LC</span>
+                            <div class="site-copy">
+                                <div class="site-name">力扣</div>
+                                <div class="site-desc">算法题库与编程训练</div>
                             </div>
                         </a>
                     </div>
