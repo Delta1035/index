@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -19,14 +19,14 @@
                 <div class="input-wrapper">
                     <!-- <input name="wd" class="searchInput" type="text" placeholder="请输入你的无聊的问题" pattern="[A-Za-z]{3}"
                         title="限制条件提示"> -->
-                    <input name="wd" class="searchInput" type="text" placeholder="" autofocus>
-                    <input id="submit" type="submit" value=""></input>
+                    <input name="wd" class="searchInput" type="text" placeholder="搜索或输入关键词" autofocus>
+                    <input id="submit" type="submit" value="">
                 </div>
                 <!-- <div class="btn2"></div> -->
             </form>
             <div class="changeSearch">
-                <button id="baidu" onclick="useBaidu()">百度</button>
-                <button id="bing" onclick="useBing()">必应</button>
+                <button id="baidu" class="active" type="button" onclick="useBaidu()">百度</button>
+                <button id="bing" type="button" onclick="useBing()">必应</button>
             </div>
             <div class="site-wrapper">
                 <a class="site site-hover" href="http://www.youku.com" target="_blank">
